@@ -18,9 +18,9 @@
         @endforeach
 
 
-        <x-confirmation-modal wire:model.defer="showDeleteUserModal">
+        <x-confirmation-modal wire:model="showDeleteUserModal">
             <x-slot name="title">
-                Supprimer {{ $currentUser->name }}
+                Supprimer {{ $currentUser ? $currentUser->name : ' ' }}
             </x-slot>
             <x-slot name="body">
                 Si vous confirmez, votre compte sera supprimé définitivement.
