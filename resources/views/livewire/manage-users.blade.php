@@ -15,19 +15,19 @@
                 <button class="text-indigo-600 hover:text-indigo-900" wire:click="confirmDelete({{ $user->id }})">Supprimer</button>
             </div>
         </li>
+    </ul>
         @endforeach
 
 
         <x-confirmation-modal wire:model="showDeleteUserModal">
             <x-slot name="title">
-                Supprimer {{ $currentUser ? $currentUser->name : ' ' }}
+                Supprimer {{ $user ? $user->name : 'Utilisateur Inconnu' }}
             </x-slot>
             <x-slot name="body">
                 Si vous confirmez, votre compte sera supprimé définitivement.
             </x-slot>
             <x-slot name="footer">
-                <x-button class="bg-gray-400 hover:bg-gray-500" wire:click="$set('showDeleteUserModal', false) ">Annuler</x-button>
-                <x-button class="bg-blue-400 hover:bg-blue-500" wire:click="delete">Confirmer</x-button>
+                <x-button class="bg-gray-400 hover:bg-gray-500" wire:click="$set('showDeleteUserModal', false)">Annuler</x-button>
             </x-slot>
         </x-confirmation-modal>
 

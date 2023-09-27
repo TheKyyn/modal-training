@@ -13,7 +13,7 @@ class ManageUsers extends Component
 
     public function mount()
     {
-        $this->currentUser = new User();
+        $this->currentUser = null;
     }
 
     public function confirmDelete($userId)
@@ -24,14 +24,16 @@ class ManageUsers extends Component
     }
 
     public function delete()
-    {
-
+{
+    if($this->currentUser) { // Vérifie que $currentUser n'est pas null
         if ($this->currentUser->exists) {
+            $this->currentUser->delete($userId);
             User::find($this->currentUser->id)->delete();
-            $this->currentUser = null;
+            $this->currentUser = null; // Réinitialise $currentUser à null
         }
         $this->showDeleteUserModal = false;
     }
+}
 
     public function render()
     {
